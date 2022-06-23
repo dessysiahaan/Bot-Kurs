@@ -24,9 +24,13 @@ newdate <- jisdor[which(jisdor$Day==today),]
 
 
 #Connect to MongoDB
-  
 
-connection_string = 'mongodb+srv://dbmds001:sta562mds@STAMDS.kuzgp.mongodb.net/?retryWrites=true&w=majority'
+user <- Sys.getenv("MONGO_DB_USER")
+pass <- Sys.getenv("MONGO_DB_PASSWORD")
+cluster <- Sys.getenv("MONGO_DB_CLUSTER")
+code <- Sys.getenv("MONGO_DB_CODE")
+
+connection_string <- paste0('mongodb+srv://', user, ":" pass, "@", cluster, ".", code, '.mongodb.net/?retryWrites=true&w=majority')
 kurs_bi = mongo(collection="kurs_jisdor",
                 db="bot_kurs",
                 url=connection_string)
