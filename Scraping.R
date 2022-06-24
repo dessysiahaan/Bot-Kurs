@@ -29,7 +29,8 @@ newdate <- jisdor[which(jisdor$Day==today),]
 connection_string = Sys.getenv("MONGO_DB_CONNECTION")
 kurs_bi <- mongo(collection=Sys.getenv("MONGO_DB_COLLECTION"),
                 db         = Sys.getenv("MONGO_DB_NAME"),
-                url = connection_string)
+                url = connection_string,
+                verbose = TRUE)
 
 
 #Insert Data to MongoDB
