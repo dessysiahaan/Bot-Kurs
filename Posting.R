@@ -5,8 +5,8 @@ library(mongolite)
 #Connect Mongo DB
 
 connection_string = 'mongodb+srv://dbmds001:sta562mds@stamds.kuzgp.mongodb.net/?retryWrites=true&w=majority'
-kurs_bi = mongo(collection="kurs_jisdor",
-                db="bot_kurs",
+kurs_bi = mongo(collection="kurs",
+                db="jisdor",
                 url=connection_string)
 
 
