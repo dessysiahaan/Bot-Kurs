@@ -33,7 +33,9 @@ df_latest <- tail(df_latest,1)
 #Tweet
 hashtag <- c("Kurs", "Uang", "Rupiah", "USD", "MongoDB", "ManajemenDataStatistika", "BOT", "JISDOR", "Chart", "ggplot")
 samp_word <- sample(hashtag, 3)
-tweetskurs <- paste0("Kurs Hari Ini (", df_latest$Date, "): ",df_latest$Rates, "\n",
+tweetskurs <- paste0("Hi Peeps! \n", 
+                     "Kurs Hari Ini (", df_latest$Date, "): ",df_latest$Rates, "\n",
+                     "Berikut Trend 10 Hari terakhir: \n"
                      "#", samp_word[1], " #", samp_word[2], " #", samp_word[3])
 #timeseries
 time = df$Date
