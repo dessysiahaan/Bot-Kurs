@@ -31,5 +31,5 @@ jobs:
         run: Rscript -e 'install.packages("dplyr", dependencies = TRUE)'
       - name: Scrap kurs and insert into mongo
         run: Rscript scraping.R
-      - name: Tweet top videos on youtube
+      - name: Posting kurs today
         run: Rscript posting.R
