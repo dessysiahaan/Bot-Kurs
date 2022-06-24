@@ -53,8 +53,8 @@ pic <- df %>%
   ylab("Rates") +
   theme_ipsum()
 
-pic_file <- tempfile( fileext = ".jpg")
-ggsave(pic_file, plot=pic, device="jpg", dpi=144, width = 8, height = 8, units = 'in')
+pic_file <- tempfile( fileext = ".png")
+ggsave(pic_file, plot=pic, device="png", dpi=144, width = 8, height = 8, units = 'in')
 
 
 #Publish
