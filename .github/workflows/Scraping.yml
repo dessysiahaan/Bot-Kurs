@@ -30,6 +30,6 @@ jobs:
       - name: Install dplyr package
         run: Rscript -e 'install.packages("dplyr", dependencies = TRUE)'
       - name: Scrap kurs and insert into mongo
-        run: Rscript scraping.R
+        run: Rscript Scraping.R
       - name: Posting kurs today
-        run: Rscript posting.R
+        run: Rscript Posting.R
