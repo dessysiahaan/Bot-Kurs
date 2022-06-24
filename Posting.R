@@ -26,7 +26,7 @@ df_latest <- kurs_bi$find()
 df_latest <- tail(df_latest,1)
 
 #Tweet
-tweetskurs <- paste0("Kurs Hari Ini: ", df_latest$Date,  df_latest$Rates)
+tweetskurs <- paste0("Kurs Hari Ini (", df_latest$Date. "): ",  df_latest$Rates)
 
 hashtag <- c("Kurs", "Uang", "Rupiah", "USD", "MongoDB", "ManajemenDataStatistika", "BOT", "JISDOR", "Chart", "ggplot")
 samp_word <- sample(hashtag, 3)
