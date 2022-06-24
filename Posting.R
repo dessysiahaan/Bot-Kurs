@@ -15,10 +15,10 @@ kurs_bi = mongo(collection="kurs",
 
 bot <- rtweet::create_token(
   app = "MDSBOT",
-  consumer_key =    Sys.getenv("TWITTER_CONSUMER_API_KEY"), 
-  consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"), 
-  access_token =    Sys.getenv("TWITTER_CONSUMER_ACCESS_TOKEN"), 
-  access_secret =   Sys.getenv("TWITTER_CONSUMER_TOKEN_SECRET")
+  consumer_key =    "cgxbRmb3r38XJNLefU920r45L", 
+  consumer_secret = "8PRNIgwNPosYupacmtgf3YBQXAizlfC6PLgMbMPy6MYuYHNn1B", 
+  access_token =    "1539481739701018624-O1h02p8UezdrB05SrpcY0MclNg2CdT", 
+  access_secret =   "0CfGGhL05vOthgin8IqAKbCFToEZS3tX5D9Ui5s7gTQkS"
 )
 
 #Get Data from DB
