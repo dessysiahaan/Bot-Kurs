@@ -17,17 +17,18 @@ jisdor <- html %>%
 str(jisdor)
 jisdor
 
+today <- format(Sys.time(), "%d")
+jisdor$Day <- unlist(lapply(str_split(jisdor$Date, " "), `[[`, 1))
+newdate <- jisdor[which(jisdor$Day==today),]
 
 
 #Connect to MongoDB
 
 connection_string = 'mongodb+srv://dbmds001:sta562mds@stamds.kuzgp.mongodb.net/?retryWrites=true&w=majority'
-kurs_bi <- mongo(collection='kurs',
-                db         = 'jisdor',
-                url = connection_string,
-                verbose = TRUE)
-
+kurs_bi = mongo(collection="kurs_jisdor",
+                db="bot_kurs",
+                url=connection_string)
 
 #Insert Data to MongoDB
 
-kurs_bi$insert(jisdor)
+kurs_bi$insert(newdate)
