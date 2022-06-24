@@ -2,7 +2,6 @@ library(rtweet)
 library(mongolite)
 library(ggplot2)
 library(dplyr)
-library(plotly)
 library(hrbrthemes)
 library(lubridate)
 
