@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Scraping and Posting:
+  Scraping-and-Posting:
     runs-on: macos-latest
     env:
       MONGO_DB_CONNECTION: ${{ secrets.MONGO_DB_CONNECTION }}
