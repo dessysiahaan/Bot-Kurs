@@ -4,9 +4,9 @@ library(mongolite)
 
 #Connect Mongo DB
 
-connection_string = 'mongodb+srv://dbmds001:sta562mds@stamds.kuzgp.mongodb.net/?retryWrites=true&w=majority'
-kurs_bi = mongo(collection="kurs",
-                db="jisdor",
+connection_string = Sys.getenv("MONGO_DB_CONNECTION")
+kurs_bi = mongo(collection=Sys.getenv("MONGO_DB_COLLECTION"),
+                db=Sys.getenv("MONGO_DB_NAME"),
                 url=connection_string)
 
 
