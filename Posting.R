@@ -4,9 +4,14 @@ library(mongolite)
 
 #Connect Mongo DB
 
-connection_string = 'mongodb+srv://dbmds001:sta562mds@STAMDS.kuzgp.mongodb.net/?retryWrites=true&w=majority'
-kurs_bi = mongo(collection="kurs_jisdor",
-                db="bot_kurs",
+user <- Sys.getenv("MONGO_DB_USER")
+pass <- Sys.getenv("MONGO_DB_PASSWORD")
+cluster <- Sys.getenv("MONGO_DB_CLUSTER")
+code <- Sys.getenv("MONGO_DB_CODE")
+
+connection_string <- paste0('mongodb+srv://', user, ":" pass, "@", cluster, ".", code, '.mongodb.net/?retryWrites=true&w=majority')
+kurs_bi = mongo(collection=Sys.getenv("MONGO_DB_COLLECTION"),
+                db         = Sys.getenv("MONGO_DB_NAME"),
                 url=connection_string)
 
 
@@ -15,10 +20,10 @@ kurs_bi = mongo(collection="kurs_jisdor",
 
 bot <- rtweet::create_token(
   app = "MDSBOT",
-  consumer_key =    "cgxbRmb3r38XJNLefU920r45L", 
-  consumer_secret = "8PRNIgwNPosYupacmtgf3YBQXAizlfC6PLgMbMPy6MYuYHNn1B", 
-  access_token =    "1539481739701018624-O1h02p8UezdrB05SrpcY0MclNg2CdT", 
-  access_secret =   "0CfGGhL05vOthgin8IqAKbCFToEZS3tX5D9Ui5s7gTQkS"
+  consumer_key =    Sys.getenv("TWITTER_CONSUMER_API_KEY"), 
+  consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"), 
+  access_token =    Sys.getenv("TWITTER_CONSUMER_ACCESS_TOKEN"), 
+  access_secret =   Sys.getenv("TWITTER_CONSUMER_TOKEN_SECRET")
 )
 
 #Get Data from DB
