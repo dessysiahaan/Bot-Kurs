@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Scrape-and-Tweet:
+  Scraping and Posting:
     runs-on: macos-latest
     env:
       MONGO_DB_CONNECTION: ${{ secrets.MONGO_DB_CONNECTION }}
@@ -26,8 +26,16 @@ jobs:
         run: Rscript -e 'install.packages("mongolite", dependencies = TRUE)'
       - name: Install rtweet package
         run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
-      - name: Install dplyr package
+      - name: Install stringr package
         run: Rscript -e 'install.packages("stringr", dependencies = TRUE)'
+      - name: Install ggplot2 package
+        run: Rscript -e 'install.packages("ggplot2", dependencies = TRUE)'
+      - name: Install dplyr package
+        run: Rscript -e 'install.packages("dplyr", dependencies = TRUE)'
+      - name: Install hrbrthemes package
+        run: Rscript -e 'install.packages("hrbrthemes", dependencies = TRUE)'
+      - name: Install lubridate package
+        run: Rscript -e 'install.packages("lubridate", dependencies = TRUE)'
       - name: Scrap kurs and insert into mongo
         run: Rscript Scraping.R
       - name: Posting kurs today
