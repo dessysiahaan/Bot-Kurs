@@ -16,7 +16,7 @@ kurs_bi = mongo(collection=Sys.getenv("MONGO_DB_COLLECTION"),
 bot <- rtweet::create_token(
   app = Sys.getenv("TWITTER_APPS"),
   consumer_key =    Sys.getenv("TWITTER_CONSUMER_API_KEY"), 
-  consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRETY"), 
+  consumer_secret = Sys.getenv("TWITTER_CONSUMER_API_SECRET"), 
   access_token =    Sys.getenv("TWITTER_CONSUMER_ACCESS_TOKEN"), 
   access_secret =   Sys.getenv("TWITTER_CONSUMER_TOKEN_SECRET")
 )
