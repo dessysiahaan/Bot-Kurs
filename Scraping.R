@@ -22,7 +22,7 @@ jisdor
 #Connect to MongoDB
 
 connection_string = 'mongodb+srv://dbmds001:sta562mds@stamds.kuzgp.mongodb.net/?retryWrites=true&w=majority'
-kurs_bi <- mongo(collection='kurs'
+kurs_bi <- mongo(collection='kurs',
                 db         = 'jisdor',
                 url = connection_string,
                 verbose = TRUE)
