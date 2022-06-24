@@ -1,6 +1,10 @@
 library(rtweet)
 library(mongolite)
-
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(hrbrthemes)
+library(lubridate)
 
 #Connect Mongo DB
 
@@ -22,20 +26,41 @@ bot <- rtweet::create_token(
 )
 
 #Get Data from DB
+df <- kurs_bi$find()
+df <- tail(df,10)
 df_latest <- kurs_bi$find()
 df_latest <- tail(df_latest,1)
 
 #Tweet
-tweetskurs <- paste0("Kurs Hari Ini (", df_latest$Date. "): ",  df_latest$Rates)
-
 hashtag <- c("Kurs", "Uang", "Rupiah", "USD", "MongoDB", "ManajemenDataStatistika", "BOT", "JISDOR", "Chart", "ggplot")
 samp_word <- sample(hashtag, 3)
+tweetskurs <- paste0("Kurs Hari Ini (", df_latest$Date, "): ",df_latest$Rates, "\n",
+                     "#", samp_word[1], " #", samp_word[2], " #", samp_word[3])
+#timeseries
+time = df$Date
+time = dmy(time)
+df$Date = time
+
+#as numeric
+df$Rate <- gsub("Rp","",df$Rates)
+df$Rate <- gsub(".00","",df$Rate)
+df$Rate <- gsub(",", "", df$Rate)
+df$Rate <- as.numeric(df$Rate)
+
+#plot
+pic <- df %>%
+  ggplot( aes(x=Date, y=Rate)) +
+  geom_line(color="#69b3a2") +
+  ylab("Rates") +
+  theme_ipsum()
+
+pic_file <- tempfile( fileext = ".jpg")
+ggsave(pic_file, plot=pic, device="jpg", dpi=144, width = 8, height = 8, units = 'in')
 
 
 #Publish
 rtweet::post_tweet(
   status = tweetskurs,
+  media = pic_file,
   token = bot
 )
-
-
